@@ -7,7 +7,7 @@ const scriptList = document.getElementsByTagName('script')
 
 let baseWidth = 375
 for (let js of Array.from(scriptList)) {
-	if (js.src.indexOf('rhyrem') > 0) {
+	if (js.src.indexOf('rhy-rem') > 0) {
 		baseWidth = js.dataset && js.dataset.bw
 		break
 	}
