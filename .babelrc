@@ -1,0 +1,14 @@
+{
+    "presets": [
+      [
+        "@babel/env",
+        {
+          "targets": {
+            "chrome": "4",
+            "safari": "8"
+          },
+          "useBuiltIns": "usage"
+        }
+      ]
+    ]
+  }

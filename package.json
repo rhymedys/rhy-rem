@@ -1,0 +1,32 @@
+{
+  "name": "rhy-rem",
+  "version": "1.0.0",
+  "var": "rhyrem",
+  "main": "dist/${name}.cjs.js",
+  "module": "dist/${name}.esm.js",
+  "iife": "dist/${name}.iife.js",
+  "browser": "dist/${name}.umd.js",
+  "dependencies": {
+    "ms": "^2.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@rollup/plugin-commonjs": "^11.0.1",
+    "@rollup/plugin-node-resolve": "^7.0.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "rollup": "^1.29.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-uglify": "^6.0.4"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "node test/test.js",
+    "pretest": "npm run build"
+  },
+  "files": [
+    "dist"
+  ]
+}
