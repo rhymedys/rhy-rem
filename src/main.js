@@ -1,21 +1,26 @@
-console.log('screen.width:', screen.width, 'screen.height:', screen.height)
-console.log('window.devicePixelRatio', window.devicePixelRatio)
-
-// var fontSize = (screen.width * window.devicePixelRatio / 2) / 375
-// document.getElementsByTagName('html')[0].setAttribute('style', 'font-size:' + fontSize + 'px')
-const scriptList = document.getElementsByTagName('script')
-
-let baseWidth = 375
-for (let js of Array.from(scriptList)) {
-	if (js.src.indexOf('rhy-rem') > 0) {
-		baseWidth = js.dataset && js.dataset.bw
-		break
-	}
-}
-
-
 
 ; (function (win, lib) {
+
+	console.log('screen.width:', screen.width, 'screen.height:', screen.height)
+	console.log('window.devicePixelRatio', window.devicePixelRatio)
+
+	// var fontSize = (screen.width * window.devicePixelRatio / 2) / 375
+	// document.getElementsByTagName('html')[0].setAttribute('style', 'font-size:' + fontSize + 'px')
+	const scriptList = document.getElementsByTagName('script')
+
+	let baseWidth = 375
+	for (let js of Array.from(scriptList)) {
+		if (js.src.indexOf('rhy-rem') > 0) {
+			baseWidth = js.dataset && js.dataset.bw
+			break
+		}
+
+	}
+
+
+	console.log('basewidth', baseWidth)
+
+
 	var doc = win.document;
 	var docEl = doc.documentElement;
 	var metaEl = doc.querySelector('meta[name="viewport"]');
@@ -110,16 +115,16 @@ for (let js of Array.from(scriptList)) {
 			width = 540 * dpr;
 		}
 		//阿里的布局方案默认将屏幕分成十份，当然，如果愿意我们可以对其进行更改
-		var rem = width / baseWidth;
-		docEl.style.fontSize = rem + 'px';
+		var rem = width / Number(baseWidth) * 100;
+		docEl.style.fontSize = rem  + 'px';
 		flexible.rem = win.rem = rem;
 
 
-		Object.defineProperty(window, 'rem', {
-			value: rem,
-			enumerable: false,
-			writable: false
-		})
+		// Object.defineProperty(window, 'rem', {
+		// 	value: rem,
+		// 	enumerable: false,
+		// 	writable: false
+		// })
 
 	}
 	// resize 在设备宽度发生改变时触发
