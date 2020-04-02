@@ -60,7 +60,7 @@ for (let js of Array.from(scriptList)) {
 		//dpr css/物理 比例
 		//scale 缩放比例
 		var devicePixelRatio = win.devicePixelRatio;
-		if (isIPhone) {
+		if (isIPhone || isAndroid) {
 			// iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案
 			if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) {
 				dpr = 3;
@@ -113,6 +113,14 @@ for (let js of Array.from(scriptList)) {
 		var rem = width / baseWidth;
 		docEl.style.fontSize = rem + 'px';
 		flexible.rem = win.rem = rem;
+
+
+		Object.defineProperty(window, 'rem', {
+			value: rem,
+			enumerable: false,
+			writable: false
+		})
+
 	}
 	// resize 在设备宽度发生改变时触发
 	win.addEventListener('resize', function () {
